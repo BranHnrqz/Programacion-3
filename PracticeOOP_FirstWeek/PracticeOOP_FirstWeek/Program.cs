@@ -10,123 +10,123 @@ namespace PracticeOOP_FirstWeek
     {
         static void Main(string[] args)
         {
-            Caballo miCaballo = new Caballo("Boni");
-            Humano miHumano = new Humano("Pedro");
-            Gorila miGorila = new Gorila("Rochi");
-            Ballena miBallena = new Ballena("Wally");
-            Cocodrilo miCocodrilo = new Cocodrilo("Modelon");
+            Horse myHorse = new Horse("Spirit");
+            Human myHuman = new Human("Íficles");
+            Gorila myGorila = new Gorila("Senpai");
+            Whale myWhale = new Whale("Wally");
+            //Crocodile myCrocodile = new Crocodile("Quijadón");
 
-            Mamifero[] almacenAnimales = new Mamifero[4];
-            almacenAnimales[0] = miCaballo;
-            almacenAnimales[1] = miHumano;
-            almacenAnimales[2] = miGorila;
-            almacenAnimales[3] = miBallena;
+            Mammal[] animalStorage = new Mammal[4];
+            animalStorage[0] = myHorse;
+            animalStorage[1] = myHuman;
+            animalStorage[2] = myGorila;
+            animalStorage[3] = myWhale;
 
             for (int i = 0; i < 3; i++)
             {
-                almacenAnimales[i].pensar();
+                animalStorage[i].think();
             }
 
-            Mamifero miMamifero = new Mamifero("");
-            miMamifero.pensar();
+            Mammal myMammal = new Mammal("");
+            myMammal.think();
 
-            miCaballo.cuidarCrias();
-            miHumano.getNombre();
-            miGorila.trepar();
+            myHorse.breedingCare();
+            myHuman.getName();
+            myGorila.climb();
         }
-        abstract class Animales
+        abstract class Animals
         {
-            public void respirar()
+            public void breathe()
             {
-                Console.WriteLine("Soy Capaz de respirar");
+                Console.WriteLine("Puedo Respirar");
             }
-            public abstract void getNombre();
-        }
-
-        interface IAnimalesTerrestres
-        {
-            int numeroPatas();
+            public abstract void getName();
         }
 
-        class Reptil : Animales
+        interface ILandAnimals
         {
-            public Reptil(String nombre)
-            {
-                String nombreSerVivo = nombre;
-            }
-            public override void getNombre()
-            {
-                Console.WriteLine("El nombre del ser vivo es: " + nombreSerVivo);
-            }
-            private String nombreSerVivo;
+            int LegsNumber();
         }
 
-        class Mamifero : Animales
+        class Reptile : Animals
         {
-            public Mamifero(String nombre)
+            public Reptile(String name)
             {
-                String nombreSerVivo = nombre;
+                String livingBeingName = name;
             }
-            public void pensar()
+            public override void getName()
+            {
+                Console.WriteLine("El nombre del ser vivo es: " + livingBeingName);
+            }
+            private String livingBeingName;
+        }
+
+        class Mammal : Animals
+        {
+            public Mammal(String name)
+            {
+                String livingBeingName = name;
+            }
+            public void think()
             {
                 Console.WriteLine("Pensamientos básico instintivos");
             }
 
-            public void cuidarCrias()
+            public void breedingCare()
             {
-                Console.WriteLine("Cuidar de las crias hasta que se valgan por si solar");
+                Console.WriteLine("Cuidar de las crias hasta que se valgan por si solas");
             }
-            public override void getNombre()
+            public override void getName()
             {
-                Console.WriteLine("El nombre del ser vivo es: " + nombreSerVivo);
+                Console.WriteLine("El nombre del ser vivo es: " + livingBeingName);
             }
 
-            private String nombreSerVivo;
+            private String livingBeingName;
         }
 
-        class Ballena : Mamifero
+        class Whale : Mammal
         {
-            public Ballena(String nombreBallena) : base(nombreBallena)
+            public Whale(String whaleName) : base(whaleName)
             {
             }
-            public void nadar()
+            public void swim()
             {
                 Console.WriteLine("Soy capaz de nadar");
             }
         }
 
-        class Caballo : Mamifero, IAnimalesTerrestres
+        class Horse : Mammal, ILandAnimals
         {
-            public Caballo(String nombreCaballo) : base(nombreCaballo)
+            public Horse(String horseName) : base(horseName)
             {
 
             }
-            public void galopar()
+            public void gallop()
             {
                 Console.WriteLine("Soy Capaz de galopar");
             }
-            public int numeroPatas()
+            public int LegsNumber()
             {
                 return 4;
             }
 
         }
-        class Humano : Mamifero
+        class Human : Mammal
         {
-            public Humano(String nombreHumano) : base(nombreHumano)
+            public Human(String humanName) : base(humanName)
             {
             }
-            public void pensar()
+            public void think()
             {
                 Console.WriteLine("Soy capaz de pensar ¿?");
             }
         }
-        class Gorila : Mamifero, IAnimalesTerrestres
+        class Gorila : Mammal, ILandAnimals
         {
-            public Gorila(String nombreGorila) : base(nombreGorila)
+            public Gorila(String gorilaName) : base(gorilaName)
             {
             }
-            public void trepar()
+            public void climb()
             {
                 Console.WriteLine("Soy capaz de trepar");
             }
@@ -135,7 +135,7 @@ namespace PracticeOOP_FirstWeek
                 return 2;
             }
         }
-        class Cocodrilo : Reptil, IAnimalesTerrestres
+        class Cocodrilo : Reptile, IAnimalesTerrestres
         {
             public Cocodrilo(String nombreCocodrilo) : base(nombreCocodrilo)
             {
@@ -145,7 +145,7 @@ namespace PracticeOOP_FirstWeek
             {
                 Console.WriteLine("Soy Capaz de morder");
             }
-            public int numeroPatas()
+            public int LegsNumber()
             {
                 return 4;
             }
